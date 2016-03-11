@@ -28,7 +28,7 @@ class Node
 
 end
 
-class SinglyLinkedList
+class DoublyLinkedList
   def initialize(head)
     @head = head
     @last = head
