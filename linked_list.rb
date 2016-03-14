@@ -1,7 +1,7 @@
 class Link
   attr_accessor :value, :prev, :next
 
-  def initialize(value)
+  def initialize(value = nil)
     @value = value
     @prev = nil
     @next = nil
