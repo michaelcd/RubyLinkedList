@@ -3,11 +3,10 @@ require_relative 'linked_list'
 describe 'Link' do
   let(:link1) { Link.new(1) }
   let(:link2) { Link.new(2) }
+  let(:link3) { Link.new(3) }
 
   describe '#insert' do
-    before(:each) do
-      link1.insert(link2)
-    end
+    before(:each) { link1.insert(link2) }
 
     it 'adds a link as a child and updates #next value' do
       expect(link1.next).to eq(link2)
@@ -19,61 +18,69 @@ describe 'Link' do
   end
 
   describe '#remove' do
-    it 'removes self from parent'
-    it 'updates parent node #next value'
-    it 'updates self #prev value'
+    before(:each) do
+      link1.insert(link2)
+      link2.insert(link3)
+      link3.remove
+    end
+
+    it 'updates parent node #next value' do
+      expect(link2.next).to eq(nil)
+    end
+
+    it 'updates self #prev value' do
+      expect(link3.prev).to eq(nil)
+    end
   end
 end
 
 describe 'DoublyLinkedList' do
+  let(:link1) { Link.new(1) }
+  let(:link2) { Link.new(2) }
+  let(:link3) { Link.new(3) }
+  let(:list) { DoublyLinkedList.new(link1) }
+
   describe '#first' do
     it 'defaults to the head' do
-      link1 = Link.new(1)
-      list = DoublyLinkedList.new(link1)
       expect(list.first).to eq(link1)
     end
   end
 
   describe '#last' do
     it 'defaults to the head' do
-      link1 = Link.new(1)
-      list = DoublyLinkedList.new(link1)
       expect(list.last).to eq(link1)
     end
   end
 
   describe '#push' do
+    before(:each) { list.push(link2) }
+
+    it 'returns the pushed link' do
+      expect(list.push(link3)).to eq(link3)
+    end
+
     it 'adds a link to the list' do
-      link1 = Link.new(1)
-      link2 = Link.new(2)
-      list = DoublyLinkedList.new(link1)
-      list.push(link2)
       expect(list.first.next).to eq(link2)
     end
 
     it 'updates the value of #last' do
-      link1 = Link.new(1)
-      link2 = Link.new(2)
-      list = DoublyLinkedList.new(link1)
-      list.push(link2)
       expect(list.last).to eq(link2)
     end
   end
 
   describe '#pop' do
-    it 'removes a link from the end of the list' do
-      link1 = Link.new(1)
-      link2 = Link.new(2)
-      list = DoublyLinkedList.new(link1)
+    before(:each) do
       list.push(link2)
-      expect(list.first.next).to eq(link2)
+      list.push(link3)
+    end
+
+    it 'returns the popped link' do
+      expect(list.pop).to eq(link3)
     end
 
     it 'updates the value of #last' do
-      link1 = Link.new(1)
-      link2 = Link.new(2)
-      list = DoublyLinkedList.new(link1)
-      list.push(link2)
+      list.pop
+
       expect(list.last).to eq(link2)
     end
   end
