@@ -7,7 +7,7 @@ class Link
     @next = nil
   end
 
-  def insert(node)
+  def insert(link)
     node.prev = self
     @next = node
     node
@@ -28,8 +28,8 @@ class DoublyLinkedList
     @last = head
   end
 
-  def push(node)
-    @last.insert(node)
+  def push(link)
+    @last.insert(link)
     @last = node
   end
 
