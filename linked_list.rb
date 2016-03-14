@@ -1,18 +1,10 @@
-class Node
+class Link
   attr_accessor :value, :prev, :next
 
   def initialize(value)
     @value = value
     @prev = nil
     @next = nil
-  end
-
-  def next
-    @next
-  end
-
-  def prev
-    @prev
   end
 
   def insert(node)
@@ -29,17 +21,11 @@ class Node
 end
 
 class DoublyLinkedList
+  attr_reader :first, :last
+
   def initialize(head)
-    @head = head
+    @first = head
     @last = head
-  end
-
-  def first
-    @head
-  end
-
-  def last
-    @last
   end
 
   def push(node)
