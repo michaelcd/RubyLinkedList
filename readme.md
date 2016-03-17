@@ -2,6 +2,8 @@
 
 An implementation of the doubly [Linked List] data structure in Ruby with specs.
 
+`demo.rb` contains a sample algorithm problem solved using the `Link` and `DoublyLinkedList` classes.
+
 ## Methods
 
 ### Link
