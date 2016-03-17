@@ -8,9 +8,9 @@ class Link
   end
 
   def insert(link)
-    node.prev = self
-    @next = node
-    node
+    link.prev = self
+    @next = link
+    link
   end
 
   def remove
@@ -21,7 +21,7 @@ class Link
 end
 
 class DoublyLinkedList
-  attr_reader :first, :last
+  attr_accessor :first, :last
 
   def initialize(head)
     @first = head
@@ -30,7 +30,7 @@ class DoublyLinkedList
 
   def push(link)
     @last.insert(link)
-    @last = node
+    @last = link
   end
 
   def pop
