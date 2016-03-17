@@ -13,3 +13,6 @@ An implementation of the doubly [Linked List] data structure in Ruby with specs.
 * `#pop` - Remove the last link from the list.
 
 [Linked List]: https://en.wikipedia.org/wiki/Linked_list
+
+## Todo
+* Write specs for demo algorithm problem using Link and DoublyLinkedList classes.
